@@ -32,6 +32,11 @@ public class MoviesMovieDAO implements MovieDAO<Movie> {
     }
 
     @Override
+    public void insert(Movie movie) {
+        
+    }
+
+    @Override
     public List<Movie> findAll() {
         List<Document> movies = collection.find().into(new ArrayList<>());
         return movies.stream()

@@ -25,6 +25,10 @@ public class Main {
             movieDAO.findAll().forEach(movies -> System.out.println(movies));
 
             Document found = movieDAO.findByTitle("Super Mario Galaxy");
+            if (found != null) {
+                System.out.println("Hittat titel:");
+                System.out.println(found.toJson());
+            }
 
 
         } catch (Exception e) {

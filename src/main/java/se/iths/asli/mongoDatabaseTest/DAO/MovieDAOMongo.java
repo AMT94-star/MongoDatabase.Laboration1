@@ -33,6 +33,11 @@ public class MovieDAOMongo implements MovieDAO<Document> {
     }
 
     @Override
+    public void insert(Document movie) {
+
+    }
+
+    @Override
     public List<Document> findAll() {
         List<Document> movies = new ArrayList<>();
         for (Document doc : collection.find()) {
