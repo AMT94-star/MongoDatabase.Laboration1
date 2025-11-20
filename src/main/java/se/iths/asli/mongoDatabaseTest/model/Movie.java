@@ -25,6 +25,9 @@ public class Movie {
         this.genres = genres;
     }
 
+    public Movie() {
+    }
+
     public String getTitle() {
         return title;
     }
@@ -73,5 +76,21 @@ public class Movie {
             doc.append("_id", this.id);
         }
         return doc;
+    }
+
+    public static Movie fromDocument(Document doc) {
+        Movie movie = new Movie();
+        movie.setId(doc.getObjectId("_id"));
+        movie.setTitle(doc.getString("title"));
+        movie.setYear(doc.getInteger("year"));
+        List<Document> genres = doc.getList("genres", Document.class);
+        List<Genre> genreList = new ArrayList<>();
+        if (genres != null) {
+            genreList = genres.stream()
+                    .map(Genre::fromDocument)
+                    .toList();
+        }
+        movie.setGenres(genreList);
+        return movie;
     }
 }
