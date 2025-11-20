@@ -11,7 +11,7 @@ import org.bson.conversions.Bson;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieDAOMongo implements MovieDAO {
+public class MovieDAOMongo implements MovieDAO<Document> {
     private final MongoCollection<Document> collection;
 
     public MovieDAOMongo(MongoCollection<Document> collection) {
@@ -25,8 +25,8 @@ public class MovieDAOMongo implements MovieDAO {
             System.out.println("Filmen " + title + " finns redan, det blir ingen insättning");
         } else {
             Document doc = new Document()
-                    .append("title: ", title)
-                    .append("year: ", year);
+                    .append("title", title)
+                    .append("year", year);
             collection.insertOne(doc);
             System.out.println("Film insatt " + title);
         }
