@@ -16,8 +16,6 @@ public class Main {
             MongoCollection<Document> collection = database.getCollection("Movies");
             MovieDAOMongo movieDAO = new MovieDAOMongo(collection);
 
-            //Document doc = new Document();
-
             movieDAO.insert("Pulp Fiction", 1994);
             movieDAO.insert("Super Mario Galaxy", 2026);
             movieDAO.insert("Harry Potter and the Sorcerer's Stone", 2001);
