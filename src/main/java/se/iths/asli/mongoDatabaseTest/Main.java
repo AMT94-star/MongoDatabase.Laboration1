@@ -25,7 +25,6 @@ public class Main {
 
             System.out.println("\nAlla filmer:");
             movieDAO.findAll().forEach(movies -> System.out.println(movies));
-            movieDAO.deleteMultiple(1990);
 
             Document found = movieDAO.findByTitle("Super Mario Galaxy");
 
